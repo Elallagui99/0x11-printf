@@ -2,20 +2,24 @@
 #include <stdarg.h>
 #include <unistd.h>
 /**
- * print_format - specifie which function to use
+ * check_flags - specifie which function to use
  * according to the format
  * @format: character string
  * @ap: list of arguments
  * Return: number of charachters printed
  */
-int print_format(char format, va_list ap)
+int check_flags(const char format, va_list ap)
 {
 	int count = 0;
 
 	if (format == 'c')
-		count =  print_char(va_arg(ap, int));
+		count =  print_char((char)va_arg(ap, int));
 	else if (format == 's')
 		count = print_string(va_arg(ap, char *));
+	else if (format == '%')
+		count += print_char(format);
+	else if (format == 'd' || format == 'i')
+		count += print_digit(va_arg(ap, int), 10, format);
 	else
 		count += write(1, &format, 1);
 		
@@ -38,7 +42,7 @@ int _printf(const char *format, ...)
 	while (*format != '\0')
 	{
 		if (*format == '%')
-			count += print_format(*(++format), ap);
+			count +=check_flags(*(++format), ap);
 		else
 			count += write(1, format, 1);
 		++format;
