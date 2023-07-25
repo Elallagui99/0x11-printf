@@ -20,9 +20,7 @@ int check_flags(const char format, va_list ap)
 		count += print_char(format);
 	else if (format == 'd' || format == 'i')
 		count += print_digit(va_arg(ap, int), 10, format);
-	else
-		count += write(1, &format, 1);
-		
+
 	return (count);
 }
 
@@ -42,7 +40,7 @@ int _printf(const char *format, ...)
 	while (*format != '\0')
 	{
 		if (*format == '%')
-			count +=check_flags(*(++format), ap);
+			count += check_flags(*(++format), ap);
 		else
 			count += write(1, format, 1);
 		++format;
