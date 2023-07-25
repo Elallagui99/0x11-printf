@@ -19,9 +19,15 @@ int check_flags(const char format, va_list ap)
 	else if (format == '%')
 		count += print_char(format);
 	else if (format == 'd' || format == 'i')
-		count += print_digit(va_arg(ap, int), 10, format);
+		count += print_int(va_arg(ap, int));
+	else if (format == 'x' || format == 'X')
+		count += print_hex(va_arg(ap, int), format);
+	else if (format == 'u')
+		count += print_uint(va_arg(ap, unsigned int));
+	else if (format == 'o')
+		count += print_octal(va_arg(ap, unsigned int));
 
-	return (count);
+	return(count);
 }
 
 /**
