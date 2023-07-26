@@ -10,4 +10,7 @@ int print_int(int n);
 int print_hex(unsigned int num, char format);
 int print_uint(unsigned int n);
 int print_octal(unsigned int n);
+int print_add(void *add);
+int print_binary(unsigned int num);
+
 #endif

@@ -26,6 +26,15 @@ int check_flags(const char format, va_list ap)
 		count += print_uint(va_arg(ap, unsigned int));
 	else if (format == 'o')
 		count += print_octal(va_arg(ap, unsigned int));
+	else if (format == 'p')
+		count += print_add(va_arg(ap, void *));
+	else if (format == 'b')
+		count += print_binary(va_arg(ap, unsigned int));
+	else
+	{
+		count += print_char('%');
+		count += print_char(format);
+	}
 
 	return(count);
 }
