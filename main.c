@@ -13,6 +13,7 @@ int main(void)
 	int len2;
 	unsigned int ui;
 	void *addr;
+	long int l = (long int)INT_MAX + 1024;
 
        	len = _printf("Let's try to printf a simple sentence.\n");
 	len2 = printf("Let's try to printf a simple sentence.\n");
@@ -43,5 +44,35 @@ int main(void)
 	printf("Len:[%d]\n", len2);
 	_printf("Unknown:[%r]\n");
 	printf("Unknown:[%r]\n");
+
+
+	_printf("Complete the sentence: You %s nothing, Jon Snow.\n", (char *)0);
+	printf("Complete the sentence: You %s nothing, Jon Snow.\n", (char *)0);
+	/*_printf(NULL);
+	*printf(NULL);
+	*/
+	_printf("%\n");
+	printf("%\n");
+	_printf("%d\n", -1024);
+	printf("%d\n", -1024);
+	_printf("%d\n", INT_MIN);
+	printf("%d\n", INT_MIN);
+	_printf("%d\n", l);
+	printf("%d\n", l);
+	_printf("%d - %d = %d\n", 1024, 2048, -1024);
+	printf("%d - %d = %d\n", 1024, 2048, -1024);
+	_printf("%d + %d = %d\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
+	printf("%d + %d = %d\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
+	_printf("%i\n", -1024);
+	printf("%i\n", -1024);
+	_printf("%i\n", INT_MIN);
+	printf("%i\n", INT_MIN);
+	_printf("%i\n", l);
+	printf("%i\n", l);
+	_printf("%i - %i = %i\n", 1024, 2048, -1024);
+	printf("%i - %i = %i\n", 1024, 2048, -1024);
+	_printf("%i + %i = %i\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
+	printf("%i + %i = %i\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
+
 	return (0);
 }

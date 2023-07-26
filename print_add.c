@@ -8,9 +8,9 @@
 int print_add(void *add)
 {
 	int count;
-	long unsigned int p;
+	unsigned long int p;
 
-	p = (long unsigned int)add;
+	p = (unsigned long int)add;
 	count = print_string("0x");
 	count += print_hex(p, 'x');
 	return (count);

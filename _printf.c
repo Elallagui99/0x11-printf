@@ -19,7 +19,7 @@ int check_flags(const char format, va_list ap)
 	else if (format == '%')
 		count += print_char(format);
 	else if (format == 'd' || format == 'i')
-		count += print_int(va_arg(ap, int));
+		count += print_int((long)va_arg(ap, int));
 	else if (format == 'x' || format == 'X')
 		count += print_hex(va_arg(ap, int), format);
 	else if (format == 'u')
@@ -36,7 +36,7 @@ int check_flags(const char format, va_list ap)
 		count += print_char(format);
 	}
 
-	return(count);
+	return (count);
 }
 
 /**
@@ -54,7 +54,7 @@ int _printf(const char *format, ...)
 	va_start(ap, format);
 	while (*format != '\0')
 	{
-		if (*format == '%')
+		if (*format == '%' && (format + 1) != NULL)
 			count += check_flags(*(++format), ap);
 		else
 			count += write(1, format, 1);
