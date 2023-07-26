@@ -1,32 +1,23 @@
-/**
- * printf_binary - prints a binary number.
- * @val: arguments.
- * Return: 1.
- */
-int print_binary(va_list val)
+int _printf_binary(unsigned int num)
 {
-	int flag = 0;
-	int cont = 0;
-	int i, a = 1, b;
-	unsigned int p, num = va_arg(val, unsigned int);
+	int binary[64] = {0};
+	int j, i = 0;
+            int count =0;
 
-	for (i = 0; i < 32; i++)
+	if (num == 0)
 	{
-		p = ((a << (31 - i)) & num);
-		if (p >> (31 - i))
-			flag = 1;
-		if (flag)
-		{
-			b = p >> (31 - i);
-			print_char(b + 48);
-			cont++;
-		}
+		count += print_char('0');
+		return (count);
 	}
-	if (cont == 0)
+	while (num > 0)
 	{
-		cont++;
-		print_char('0');
+		binary[i] = num & 1;
+		num = num >> 1;
+		i++;
 	}
-	return (cont);
+	for (j = i - 1; j >= 0; j--)
+	{
+		count += print_char(binary[j] + '0');
+	}
+	return(count);
 }
-

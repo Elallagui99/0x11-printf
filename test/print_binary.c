@@ -17,7 +17,7 @@ int _printf_binary(unsigned int num)
 	}
 	for (j = i - 1; j >= 0; j--)
 	{
-		count += print_ char(binary[j] + '0');
+		count += print_char(binary[j] + '0');
 	}
-	return (count);
+	return(count);
 }
